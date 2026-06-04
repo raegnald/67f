@@ -4,6 +4,10 @@
 unsigned char memory[VEC_LEN];
 int pointer = 0, current = 0;
 char program[676767];
+int errP(){
+  printf("Error: pointer is zero\n");
+  return 6767;
+}
 int err6(){
   printf("You don't know how to comment? Type /67 ... 67/ and solved.\n");
   return 6767;
@@ -24,8 +28,32 @@ int main(int argc, char* argv[]) {
   while (program[current] != '\0') {
     int loop_count;
     char operation = program[current];
+    /* printf("%c", program[current]); */
     
     switch (operation){
+    case '/':
+      current++;
+      int e;
+      if(program[current] == '6'){
+	current++;
+	if(program[current] == '7'){
+	  current++;
+	  while(1){
+	    current++;
+	    if(program[current] == '6'){
+	      if(program[++current] == '7' && program[++current] == '/') break;
+	    }
+	  }
+	} else{
+	  e =  err6();
+	  return e;
+	}
+      } else{
+	  e =  err6();
+	  return e;
+	}
+      current++;
+      break;
     case '6':
       pointer++;
       current++;
