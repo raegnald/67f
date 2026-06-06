@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <time.h>
 #define VEC_LEN 676767
 unsigned char memory[VEC_LEN] = {0};
 int pointer = 0, current = 0;
@@ -18,6 +20,7 @@ int errArg(){
   return 6767;
 }
 int main(int argc, char* argv[]) {
+  srand(time(NULL));
   if(argc != 2){
     int e = errArg();
     return e;
@@ -102,7 +105,7 @@ int main(int argc, char* argv[]) {
           if (program[current] == '[') loop_count++;
           else if (program[current] == ']') loop_count--;
           else if (program[current] == '\0') {
-            printf("\nError: Corchete '[' no cerrado\n");
+            printf("Error: '[' not closed\n");
 	    return 6767;
           }
         }
@@ -118,6 +121,12 @@ int main(int argc, char* argv[]) {
           else if (program[current] == '[') loop_count--;
         }
       }
+      current++;
+      break;
+    case ';':
+      return 67;
+    case '9':
+      memory[pointer] = rand() % 2;
       current++;
       break;
     default:
