@@ -53,25 +53,25 @@ int main(int argc, char* argv[]) {
       current++;
       int e;
       if(program[current] == '6'){
-	current++;
-	if(program[current] == '7'){
-	  current++;
-	  cont = true;
-	  while(program[current] != '\0' && cont){
-	    current++;
-	    if(program[current] == '6' && program[current+1] == '7' && program[current+2] == '/') cont = false;
-	    }
-	  if(cont){
-	    e =  err6();
-	    return e;
-	  } else current+=3;
-	} else{
-	  e =  err6();
-	  return e;
-	}
+        current++;
+        if(program[current] == '7'){
+          current++;
+          cont = true;
+          while(program[current] != '\0' && cont){
+            current++;
+            if(program[current] == '6' && program[current+1] == '7' && program[current+2] == '/') cont = false;
+          }
+          if(cont){
+            e =  err6();
+            return e;
+          } else current+=3;
+        } else{
+          e =  err6();
+          return e;
+        }
       } else{
-	e =  err6();
-	return e;
+        e =  err6();
+        return e;
       }
       break;
     }
