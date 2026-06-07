@@ -11,6 +11,10 @@ int errP(){
   printf("Error: pointer is zero\n");
   return 6767;
 }
+int errS(){
+  printf("Error: pointer surpassed maximum allowed value of %d\n", VEC_LEN);
+  return 6767;
+}
 int err6(){
   printf("You don't know how to comment? Type /67 ... 67/ and solved.\n");
   return 6767;
@@ -42,7 +46,8 @@ int main(int argc, char* argv[]) {
   while (program[current] != '\0') {
     int loop_count;
     char operation = program[current];
-    
+    int f_err = 0;
+
     switch (operation){
     case '/': {
       current++;
@@ -71,11 +76,13 @@ int main(int argc, char* argv[]) {
       break;
     }
     case '6':
-      pointer++;
+      pointer + 1 >= VEC_LEN ? f_err = errS() : pointer++;
       current++;
+
+      if (f_err != 0) return f_err;
       break;
     case '7': {
-      int f_err = 0;
+
       pointer == 0 ? f_err = errP() : pointer--;
       current++;
       if(f_err != 0) return f_err;
